@@ -50,14 +50,11 @@ function add(todo) {
 
 function saveData() {
     const lists = document.querySelectorAll("li");
-    let todos = [];
-
-    lists.forEach(list => {
-        let todo = {
+    const todos = Array.from(lists, (list) => {
+        return {
             text: list.innerText,
             completed: list.classList.contains("text-decoration-line-through")
-        };
-        todos.push(todo);
+        }
     });
     localStorage.setItem("todos", JSON.stringify(todos));
 }
